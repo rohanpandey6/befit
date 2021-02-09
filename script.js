@@ -54,6 +54,8 @@ function clicked(index){
 		document.getElementById('data').innerHTML = `<br><p> Use the search bar to input the food items you want to know the details about. </p><p>We provide metrics considering the quantity specified in your query</p> <br>
 		
 		<p> For example:</p>  <p> "Had 2 bananas and a slice of bread" </p>
+		
+		`
 	}
 }
 
