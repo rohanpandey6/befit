@@ -4,12 +4,19 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Be fit</title>
+		<title>Befit</title>
 
 	<style> 
 	
-	.searchbox{
+	.main_div::-webkit-scrollbar {
+		display: none;
 	}
+
+	/* Hide scrollbar for IE, Edge and Firefox */
+	.main_div {
+		-ms-overflow-style: none;  /* IE and Edge */
+		scrollbar-width: none;  /* Firefox */
+		}
 	
 	body{
 		background-color: f3f3f3;
@@ -34,60 +41,90 @@
 		width: 100%;
 		}
 		
-/* Style the links inside the sidenav */
-#mySidenav a {
-  position: absolute; /* Position them relative to the browser window */
-  margin-top: 150px;
-  left: -80px; /* Position them outside of the screen */
-  transition: 0.3s; /* Add transition on hover */
-  padding: 15px; /* 15px padding */
-  width: 100px; /* Set a specific width */
-  text-decoration: none; /* Remove underline */
-  font-size: 20px; /* Increase font size */
-  color: white; /* White text color */
-  border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
-}
-
-#mySidenav a:hover {
-  left: 0; /* On mouse-over, make the elements appear as they should */
-}
-
-/* The about link: 20px from the top with a green background */
-#about {
-  top: 20px;
-  background-color: #4CAF50;
-}
-
-#nutrition {
-  top: 80px;
-  background-color: #2196F3; /* Blue */
-}
-
-#exercise {
-  top: 140px;
-  background-color: #f44336; /* Red */
-}
-
-#contact {
-  top: 200px;
-  background-color: #555 /* Light Black */
-}
+		/* Style the links inside the sidenav */
+		#mySidenav a {
+		position: absolute; /* Position them relative to the browser window */
+		margin-top: 150px;
+		left: -80px; /* Position them outside of the screen */
+		transition: 0.3s; /* Add transition on hover */
+		padding: 15px; /* 15px padding */
+		width: 100px; /* Set a specific width */
+		text-decoration: none; /* Remove underline */
+		font-size: 20px; /* Increase font size */
+		color: white; /* White text color */
+		border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+		}
 		
+		#mySidenav a:hover {
+		left: 0; /* On mouse-over, make the elements appear as they should */
+		}
+		
+		/* The about link: 20px from the top with a green background */
+		#about {
+		top: 20px;
+		background-color: #4CAF50;
+		}
+		
+		#nutrition {
+		top: 80px;
+		background-color: #2196F3; /* Blue */
+		}
+		
+		#contact {
+		top: 170px;
+		background-color: #555 /* Light Black */
+		}
+		
+		.card {
+		/* Add shadows to create the "card" effect */
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+		transition: 0.3s;
+		}
+		
+		/* On mouse-over, add a deeper shadow */
+		.card:hover {
+		box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+		}
+		
+		/* Add some padding inside the card container */
+		.container {
+		padding: 2px 16px;
+		}
+		.food_image{
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			
+		}
 </style>
 	</head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 	<body>
-		<script src="script.js"></script>
+		<div id="modal" class="w3-modal">
+    <div class="w3-modal-content">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('modal').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+      </header>
+      <div class="w3-container" id ='data'>
+        
+      </div>
+      <footer class="w3-container w3-teal">
+      </footer>
+    </div>
+  </div>
+
 		<div id="mySidenav" class="sidenav">
-			<a href="#" id="about">About</a>
-			<a href="#" id="nutrition">Nutrition</a>
-			<a href="#" id="exercise">Excercise</a>
-			<a href="#" id="contact">Contact</a>
+			<a class="menu" id='about'>About</a>
+			<a class="menu" id="nutrition">How to use</a>
+			<a class='menu' id="contact">Contact</a>
 		</div>
 		<div class ='search'>
 			<input type='text' name='search' class='searchbox' placeholder='Search item...'>
 		</div>
+		<script src="script.js"></script>
 	</body>
 
 </html>

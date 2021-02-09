@@ -2,7 +2,7 @@ var nutrients_uri = 'https://trackapi.nutritionix.com/v2/natural/nutrients'
 
 var workout_uri = 'https://trackapi.nutritionix.com/v2/natural/exercise'
 
-
+var calories = 
 
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
 function openNav() {
@@ -17,11 +17,60 @@ function closeNav() {
 }
 
 
+var about_modal = document.getElementsByClassName('menu');
+for(var i = 0; i < about_modal.length; i++) {
+  (function(index) {
+    about_modal[index].addEventListener("click", function() {
+       clicked(about_modal[index].innerText);
+     })
+  })(i);
+}
+
+function clicked(index){
+	if (index == 'About'){
+		
+		document.getElementById('modal').style.display='block';
+		if ( !document.getElementsByTagName('header')[0].innerHTML.includes('h2')){
+			document.getElementsByTagName('header')[0].innerHTML += `<h2>${index}</h2>`
+		}
+		document.getElementById('data').innerHTML = `<h2>The greatest wealth is good Health</h2> <br> <p>Welcome to Befit, it is designed to help you check what you put into yout body and stay healthy<p>`
+	}
+	
+	if (index == 'Contact'){
+		
+		document.getElementById('modal').style.display='block';
+		if ( !document.getElementsByTagName('header')[0].innerHTML.includes('h2')){
+			document.getElementsByTagName('header')[0].innerHTML += `<h2>${index}</h2>`
+		}
+		document.getElementById('data').innerHTML = `<p>For any concerns with the app please send us an email from below </p> <a href='mailto:rohanpandey6@gmail.com'> Contact us</a>`
+	}
+	
+	if (index == 'How to use'){
+		
+		document.getElementById('modal').style.display='block';
+		if ( !document.getElementsByTagName('header')[0].innerHTML.includes('h2')){
+			document.getElementsByTagName('header')[0].innerHTML += `<h2>${index}</h2>`
+		}
+		document.getElementById('data').innerHTML = `<br><p> Use the search bar to input the food items you want to know the details about. </p><p>We provide metrics considering the quantity specified in your query</p> <br>
+		
+		<p> For example:</p>  <p> "Had 2 bananas and a slice of bread" </p>
+	}
+}
 
 
+var nav_div = document.createElement('div');
+nav_div.style.height = '400px';
+nav_div.style.width = '650px';
+nav_div.style.top = '0';
+nav_div.style.left = '0';
+nav_div.style.right = '0';
+nav_div.style.bottom = '0';
+nav_div.style.margin = 'auto';	
 
 
 var main_div = document.createElement('div');
+main_div.setAttribute('class', 'main_div');
+main_div.style.overflowY = 'scroll';
 main_div.style.position = 'absolute';
 main_div.style.height = '450px';
 main_div.style.width = '550px';
@@ -82,16 +131,15 @@ function fetch_data(){
 		if (data.foods) {
 			data.foods.forEach((food) => {
 			html += `
-                    <div class="food-item" >
-                        <div class="food-name">
-                            <h3 >${food.food_name}</h3>
-							<div class="food-img">
-                            <img src="${food.photo.thumb}" alt="food" />
-						</div>
-							<h3>Calories: ${food.nf_calories}</h3>
-							<h3>Fiber: ${food.nf_dietary_fiber}</h3>
-							<h3>Protein: ${food.nf_protein}</h3>
-							<h3>Saturated Fat: ${food.nf_saturated_fat}</h3>
+                    <div class="card" >
+					
+						<img src="${food.photo.thumb}" class ="food_image" alt="food"/>
+					    <div class="container">
+                            <h4 ><b>${food.food_name}</b></h4>
+							<p>Calories: ${food.nf_calories}</p>
+							<p>Fiber: ${food.nf_dietary_fiber}</p>
+							<p>Protein: ${food.nf_protein}</p>
+							<p>Saturated Fat: ${food.nf_saturated_fat}</p>
                            
                         </div>
                     </div>
@@ -108,4 +156,4 @@ function fetch_data(){
 	});
 }
 
-document.body.append(main_div,get_result);
+document.body.append(nav_div,main_div,get_result);
